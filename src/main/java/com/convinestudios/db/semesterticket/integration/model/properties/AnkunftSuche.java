@@ -1,4 +1,4 @@
-package com.convinestudios.db.semesterticket.integration.model.internal.properties;
+package com.convinestudios.db.semesterticket.integration.model.properties;
 
 public enum AnkunftSuche {
     ABFAHRT("ABFAHRT"),

@@ -1,9 +1,9 @@
 package com.convinestudios.db.semesterticket.integration.model.internal;
 
-import com.convinestudios.db.semesterticket.integration.model.internal.properties.AnkunftSuche;
-import com.convinestudios.db.semesterticket.integration.model.internal.properties.Passenger;
-import com.convinestudios.db.semesterticket.integration.model.internal.properties.Produktgattung;
-import com.convinestudios.db.semesterticket.integration.model.internal.properties.SearchMode;
+import com.convinestudios.db.semesterticket.integration.model.properties.AnkunftSuche;
+import com.convinestudios.db.semesterticket.integration.model.properties.Passenger;
+import com.convinestudios.db.semesterticket.integration.model.properties.Produktgattung;
+import com.convinestudios.db.semesterticket.integration.model.properties.SearchMode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;

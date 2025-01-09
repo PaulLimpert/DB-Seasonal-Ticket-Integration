@@ -1,6 +1,6 @@
 package com.convinestudios.db.semesterticket.integration.validation;
 
-import com.convinestudios.db.semesterticket.integration.model.internal.properties.SearchMode;
+import com.convinestudios.db.semesterticket.integration.model.properties.SearchMode;
 import com.convinestudios.db.semesterticket.integration.model.internal.SearchRequest;
 import org.springframework.stereotype.Service;
 
