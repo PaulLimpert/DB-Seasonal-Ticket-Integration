@@ -35,6 +35,7 @@ public class SearchController {
     public SearchResponse search(@Valid @RequestBody SearchRequest searchRequest) {
         apiKeyValidationService.validate(searchRequest);
         searchRequestValidationService.validate(searchRequest);
+        // todo: use bean of ExternalApiService (Deutsche Bahn defined) and send a post request
         return null;
     }
 }
