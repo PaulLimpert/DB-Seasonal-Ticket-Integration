@@ -91,5 +91,17 @@ public class SectionsModel {
         this.verkehrsmittel = verkehrsmittel;
     }
 
-
+    @Override
+    public String toString() {
+        return "SectionsModel{" +
+                "abfahrtsZeitpunkt=" + abfahrtsZeitpunkt +
+                ", abfahrtsOrt='" + abfahrtsOrt + '\'' +
+                ", abschnittsDauer=" + abschnittsDauer +
+                ", abschnittsAnteil=" + abschnittsAnteil +
+                ", ankunftsZeitpunkt=" + ankunftsZeitpunkt +
+                ", ankunftsOrt='" + ankunftsOrt + '\'' +
+                ", halte=" + halte +
+                ", verkehrsmittel=" + verkehrsmittel +
+                '}';
+    }
 }

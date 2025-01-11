@@ -80,4 +80,17 @@ public class ConnectionModel {
         this.verbindungsDauerInSeconds = verbindungsDauerInSeconds;
         this.angebotsPreis = angebotsPreis;
     }
+
+    @Override
+    public String toString() {
+        return "ConnectionModel{" +
+                "tripId='" + tripId + '\'' +
+                ", verbindungsAbschnitte=" + verbindungsAbschnitte +
+                ", umstiegsAnzahl=" + umstiegsAnzahl +
+                ", verbindungsDauerInSeconds=" + verbindungsDauerInSeconds +
+                ", angebotsPreis=" + angebotsPreis +
+                ", tickets=" + tickets +
+                ", totalPrice=" + totalPrice +
+                '}';
+    }
 }

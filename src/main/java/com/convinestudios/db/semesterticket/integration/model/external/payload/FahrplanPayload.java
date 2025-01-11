@@ -1,9 +1,10 @@
 package com.convinestudios.db.semesterticket.integration.model.external.payload;
 
-import com.convinestudios.integration.payload.properties.AnkunftSuche;
-import com.convinestudios.integration.payload.properties.Klasse;
-import com.convinestudios.integration.payload.properties.Passenger;
-import com.convinestudios.integration.payload.properties.Produktgattung;
+
+import com.convinestudios.db.semesterticket.integration.model.properties.AnkunftSuche;
+import com.convinestudios.db.semesterticket.integration.model.properties.Klasse;
+import com.convinestudios.db.semesterticket.integration.model.properties.Passenger;
+import com.convinestudios.db.semesterticket.integration.model.properties.Produktgattung;
 
 import java.time.LocalDateTime;
 import java.util.List;

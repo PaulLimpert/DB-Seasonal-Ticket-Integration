@@ -1,6 +1,6 @@
 package com.convinestudios.db.semesterticket.integration.model;
 
-import com.convinestudios.integration.payload.properties.Produktgattung;
+import com.convinestudios.db.semesterticket.integration.model.properties.Produktgattung;
 
 public class TrainModel {
     private Produktgattung produktGattung;

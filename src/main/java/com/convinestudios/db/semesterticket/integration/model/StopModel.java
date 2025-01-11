@@ -19,4 +19,13 @@ public class StopModel {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "StopModel{" +
+                "abfahrtsZeitpunkt=" + abfahrtsZeitpunkt +
+                ", gleis='" + gleis + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

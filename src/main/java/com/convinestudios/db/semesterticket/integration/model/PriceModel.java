@@ -26,4 +26,12 @@ public class PriceModel {
         this.betrag = betrag;
         this.waehrung = waehrung;
     }
+
+    @Override
+    public String toString() {
+        return "PriceModel{" +
+                "betrag=" + betrag +
+                ", waehrung='" + waehrung + '\'' +
+                '}';
+    }
 }

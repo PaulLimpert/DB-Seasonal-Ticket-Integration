@@ -1,9 +1,7 @@
 package com.convinestudios.db.semesterticket.integration.model.internal;
 
-import com.convinestudios.db.semesterticket.integration.model.properties.AnkunftSuche;
-import com.convinestudios.db.semesterticket.integration.model.properties.Passenger;
-import com.convinestudios.db.semesterticket.integration.model.properties.Produktgattung;
-import com.convinestudios.db.semesterticket.integration.model.properties.SearchMode;
+import com.convinestudios.db.semesterticket.integration.model.Stammdaten;
+import com.convinestudios.db.semesterticket.integration.model.properties.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -35,6 +33,12 @@ public class SearchRequest {
     private LocalDate fromDate;         // For PERIODIC-Search
     private LocalDate toDate;           // For PERIODIC-Search
 
+    @NotNull(message = "Klasse cant be null")
+    private Klasse klasse;
+
+    @NotNull(message = "schnelleVerbindungen cant be null")
+    private boolean schnelleVerbindungen;
+
     @NotNull(message = "ankunftSuche cant be null")
     private AnkunftSuche ankunftSuche;
 
@@ -51,8 +55,11 @@ public class SearchRequest {
 
 
     // With maxUmstiege
-    public SearchRequest(String API_KEY, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen, int maxUmstiege) {
+
+
+    public SearchRequest(String API_KEY, LocalDateTime timeOfRequest, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, Klasse klasse, boolean schnelleVerbindungen, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen, int maxUmstiege) {
         this.API_KEY = API_KEY;
+        this.timeOfRequest = timeOfRequest;
         this.searchMode = searchMode;
         this.origin = origin;
         this.destination = destination;
@@ -60,6 +67,8 @@ public class SearchRequest {
         this.specificDay = specificDay;
         this.fromDate = fromDate;
         this.toDate = toDate;
+        this.klasse = klasse;
+        this.schnelleVerbindungen = schnelleVerbindungen;
         this.ankunftSuche = ankunftSuche;
         this.passengers = passengers;
         this.nurDeutschlandTicketVerbindungen = nurDeutschlandTicketVerbindungen;
@@ -68,8 +77,9 @@ public class SearchRequest {
     }
 
     // Without maxUmstiege
-    public SearchRequest(String API_KEY, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen) {
+    public SearchRequest(String API_KEY, LocalDateTime timeOfRequest, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, Klasse klasse, boolean schnelleVerbindungen, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen) {
         this.API_KEY = API_KEY;
+        this.timeOfRequest = timeOfRequest;
         this.searchMode = searchMode;
         this.origin = origin;
         this.destination = destination;
@@ -77,6 +87,8 @@ public class SearchRequest {
         this.specificDay = specificDay;
         this.fromDate = fromDate;
         this.toDate = toDate;
+        this.klasse = klasse;
+        this.schnelleVerbindungen = schnelleVerbindungen;
         this.ankunftSuche = ankunftSuche;
         this.passengers = passengers;
         this.nurDeutschlandTicketVerbindungen = nurDeutschlandTicketVerbindungen;
@@ -85,6 +97,18 @@ public class SearchRequest {
 
     public SearchRequest() {}
 
+    public Stammdaten extractStammdaten() {
+        return new Stammdaten(
+                getKlasse(),
+                getMaxUmstiege(),
+                getProduktgattungen(),
+                getPassengers(),
+                isSchnelleVerbindungen(),
+                false,
+                false,
+                false
+        );
+    }
 
     public String getAPI_KEY() {
         return API_KEY;
@@ -100,6 +124,22 @@ public class SearchRequest {
 
     public void setTimeOfRequest(LocalDateTime timeOfRequest) {
         this.timeOfRequest = timeOfRequest;
+    }
+
+    public Klasse getKlasse() {
+        return klasse;
+    }
+
+    public void setKlasse(Klasse klasse) {
+        this.klasse = klasse;
+    }
+
+    public boolean isSchnelleVerbindungen() {
+        return schnelleVerbindungen;
+    }
+
+    public void setSchnelleVerbindungen(boolean schnelleVerbindungen) {
+        this.schnelleVerbindungen = schnelleVerbindungen;
     }
 
     public SearchMode getSearchMode() {
