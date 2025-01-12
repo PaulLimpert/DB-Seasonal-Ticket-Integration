@@ -1,13 +1,10 @@
 package com.convinestudios.db.semesterticket.integration.model.internal;
 
-public class SearchResponse {
+import com.convinestudios.db.semesterticket.integration.model.ConnectionModel;
+import java.time.LocalDateTime;
+import java.util.List;
 
-
-
-
-    @Override
-    public String toString() {
-        // todo: json rep
-        return super.toString();
-    }
+public record SearchResponse(LocalDateTime requestAt,
+                             LocalDateTime responseAt,
+                             List<ConnectionModel> connections) {
 }

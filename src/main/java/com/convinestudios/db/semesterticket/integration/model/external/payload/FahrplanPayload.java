@@ -123,9 +123,9 @@ public class FahrplanPayload implements Payload{
 
     // Default Constructor
     public FahrplanPayload(String abfahrtsHalt, LocalDateTime anfrageZeitpunkt, String ankunftsHalt, AnkunftSuche ankunftSuche, Klasse klasse, int maxUmstiege, List<Produktgattung> produktgattungen, List<Passenger> reisende, boolean schnelleVerbindungen, boolean sitzplatzOnly, boolean bikeCarriage, boolean reservierungsKontingenteVorhanden) {
-        this.abfahrtsHalt = abfahrtsHalt;
+        this.abfahrtsHalt = "A=1@O=" + abfahrtsHalt;
         this.anfrageZeitpunkt = anfrageZeitpunkt;
-        this.ankunftsHalt = ankunftsHalt;
+        this.ankunftsHalt = "A=1@O=" + ankunftsHalt;
         this.ankunftSuche = ankunftSuche;
         this.klasse = klasse;
         this.maxUmstiege = maxUmstiege;

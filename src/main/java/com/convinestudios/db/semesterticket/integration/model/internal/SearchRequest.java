@@ -1,6 +1,6 @@
 package com.convinestudios.db.semesterticket.integration.model.internal;
 
-import com.convinestudios.db.semesterticket.integration.model.Stammdaten;
+import com.convinestudios.db.semesterticket.integration.model.StandardRequest;
 import com.convinestudios.db.semesterticket.integration.model.properties.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
@@ -55,8 +55,6 @@ public class SearchRequest {
 
 
     // With maxUmstiege
-
-
     public SearchRequest(String API_KEY, LocalDateTime timeOfRequest, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, Klasse klasse, boolean schnelleVerbindungen, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen, int maxUmstiege) {
         this.API_KEY = API_KEY;
         this.timeOfRequest = timeOfRequest;
@@ -97,8 +95,12 @@ public class SearchRequest {
 
     public SearchRequest() {}
 
-    public Stammdaten extractStammdaten() {
-        return new Stammdaten(
+    public StandardRequest extractConnectionData() {
+        return new StandardRequest(
+                getOrigin(),
+                getDestination(),
+                getSpecificTime(),
+                getAnkunftSuche(),
                 getKlasse(),
                 getMaxUmstiege(),
                 getProduktgattungen(),

@@ -1,0 +1,87 @@
+{
+  "Göttingen": [
+    "EC_IC"
+  ],
+  "Friedberg(Hess)": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Haiger": [
+    "EC_IC"
+  ],
+  "Frankfurt(Main)Hbf": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Frankfurt(Main)West": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Gießen": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Heidelberg Hbf": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Fulda": [
+    "EC_IC"
+  ],
+  "Letmathe": [
+    "EC_IC"
+  ],
+  "Treysa": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Warburg(Westf)": [
+    "EC_IC"
+  ],
+  "Hanau Hbf": [
+    "EC_IC"
+  ],
+  "Frankfurt(Main)Süd": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Kassel-Wilhelmshöhe": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Bensheim": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Weinheim(Bergstr)Hbf": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Marburg(Lahn)": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Darmstadt Hbf": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Finnentrop": [
+    "EC_IC"
+  ],
+  "Mannheim Hbf": [
+    "EC_IC"
+  ],
+  "Wetzlar": [
+    "EC_IC"
+  ],
+  "Wabern(Bz Kassel)": [
+    "EC_IC",
+    "ICE"
+  ],
+  "Siegen Hbf": [
+    "EC_IC"
+  ],
+  "Bebra": [
+    "EC_IC"
+  ]
+}

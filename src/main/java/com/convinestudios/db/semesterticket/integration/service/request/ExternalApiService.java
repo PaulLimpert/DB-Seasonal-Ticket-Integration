@@ -1,17 +1,17 @@
 package com.convinestudios.db.semesterticket.integration.service.request;
 
 import com.convinestudios.db.semesterticket.integration.exception.NoResponseException;
-import com.convinestudios.db.semesterticket.integration.model.Stammdaten;
+import com.convinestudios.db.semesterticket.integration.model.ConnectionModel;
+import com.convinestudios.db.semesterticket.integration.model.StandardRequest;
 import com.convinestudios.db.semesterticket.integration.model.external.payload.FahrplanPayload;
-import com.convinestudios.db.semesterticket.integration.model.external.response.FahrplanResponse;
 import com.convinestudios.db.semesterticket.integration.model.external.response.FahrplanResponseMapper;
-import com.convinestudios.db.semesterticket.integration.model.properties.AnkunftSuche;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ExternalApiService {
@@ -26,34 +26,31 @@ public class ExternalApiService {
     /**
      * A basic API request for a specific search of a Train connection from the Deutsche Bahn for a whole day
      *
-     * @param stammdaten the "stammdaten" of the requesting user
-     * @param origin point of departure
-     * @param destination point of destination
-     * @param date the whole day of search
-     * @param ankunftSuche defines how date is treated, time of arrival or time of departure
+     * @param connectionData the data about the requested connection
      * @return a List containing all the matching connections
      * @throws NoResponseException
      */
-    public FahrplanResponse getConnectionsByTime(Stammdaten stammdaten, String origin, String destination, LocalDateTime date, AnkunftSuche ankunftSuche) throws NoResponseException {
+    public List<ConnectionModel> getConnectionsByTime(StandardRequest connectionData) {
 
         // todo: add de-ticket
 
         FahrplanPayload payload = new FahrplanPayload(
-                "A=1@O=" + origin,
-                date,
-                "A=1@O=" + destination,
-                ankunftSuche,
-                stammdaten.klasse(),
-                stammdaten.maxUmstiege(),
-                stammdaten.produktgattungen(),
-                stammdaten.reisende(),
-                stammdaten.schnelleVerbindungen(),
-                stammdaten.sitzplatzOnly(),
-                stammdaten.bikeCarriage(),
-                stammdaten.reservierungsKontingenteVorhanden()
+                connectionData.origin(),
+                connectionData.time(),
+                connectionData.destination(),
+                connectionData.ankunftSuche(),
+                connectionData.klasse(),
+                connectionData.maxUmstiege(),
+                connectionData.produktgattungen(),
+                connectionData.reisende(),
+                connectionData.schnelleVerbindungen(),
+                connectionData.sitzplatzOnly(),
+                connectionData.bikeCarriage(),
+                connectionData.reservierungsKontingenteVorhanden()
         );
 
         try {
+            // todo: handle exceptions right (GlobalExceptionHandler)
             String jsonResponse = apiClient.post(payload.toJson())
                     .block(Duration.ofSeconds(10)); // Warte synchron auf die Antwort mit Timeout
             if (jsonResponse == null) {
@@ -61,10 +58,11 @@ public class ExternalApiService {
             }
 
             // Mappe die JSON-Antwort auf ConnectionModel
-            return FahrplanResponseMapper.mapFromJson(jsonResponse);
+            return FahrplanResponseMapper.mapFromJson(jsonResponse).getConnections();
         } catch (Exception e) {
             throw new NoResponseException("Failed to retrieve connections: " + e.getMessage(), e);
         }
     }
+
 }
 
