@@ -14,6 +14,8 @@ import java.util.Map;
 
 public class ExternalApiClient {
 
+    // todo: rate-limiter (Umgang mit 29 (Too Many Requests))
+
     private final WebClient webClient;
 
     public ExternalApiClient(String apiUrl, Map<String, String> headers, int maxInMemorySize, int maxConnections) {

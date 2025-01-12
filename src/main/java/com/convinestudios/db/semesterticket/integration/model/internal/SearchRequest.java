@@ -1,7 +1,11 @@
 package com.convinestudios.db.semesterticket.integration.model.internal;
 
-import com.convinestudios.db.semesterticket.integration.model.StandardRequest;
+import com.convinestudios.db.semesterticket.integration.model.requests.StandardRequest;
 import com.convinestudios.db.semesterticket.integration.model.properties.*;
+import com.convinestudios.db.semesterticket.integration.validation.ticket.DeutschlandTicket;
+import com.convinestudios.db.semesterticket.integration.validation.ticket.SeasonalTicket;
+import com.convinestudios.db.semesterticket.integration.validation.ticket.Ticket;
+import com.convinestudios.db.semesterticket.integration.validation.ticket.semesterticket.marburg.SemesterTicketMarburg;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -45,6 +49,9 @@ public class SearchRequest {
     @NotNull(message = "Passengers cant be null")
     private List<Passenger> passengers;
 
+    @NotNull(message = "You need to use at least one seasonal ticket")
+    private List<Ticket> seasonalTickets;
+
     @NotNull(message = "nurDeutschlandTicketVerbindungen cant be null")
     private boolean nurDeutschlandTicketVerbindungen;
 
@@ -53,9 +60,9 @@ public class SearchRequest {
 
     private int maxUmstiege;
 
+    boolean bikeCarriage;
 
-    // With maxUmstiege
-    public SearchRequest(String API_KEY, LocalDateTime timeOfRequest, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, Klasse klasse, boolean schnelleVerbindungen, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen, int maxUmstiege) {
+    public SearchRequest(String API_KEY, LocalDateTime timeOfRequest, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, Klasse klasse, boolean schnelleVerbindungen, AnkunftSuche ankunftSuche, List<Passenger> passengers, List<Ticket> seasonalTickets, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen, int maxUmstiege, boolean bikeCarriage) {
         this.API_KEY = API_KEY;
         this.timeOfRequest = timeOfRequest;
         this.searchMode = searchMode;
@@ -69,28 +76,11 @@ public class SearchRequest {
         this.schnelleVerbindungen = schnelleVerbindungen;
         this.ankunftSuche = ankunftSuche;
         this.passengers = passengers;
+        this.seasonalTickets = seasonalTickets;
         this.nurDeutschlandTicketVerbindungen = nurDeutschlandTicketVerbindungen;
         this.produktgattungen = produktgattungen;
         this.maxUmstiege = maxUmstiege;
-    }
-
-    // Without maxUmstiege
-    public SearchRequest(String API_KEY, LocalDateTime timeOfRequest, SearchMode searchMode, String origin, String destination, LocalDateTime specificTime, LocalDate specificDay, LocalDate fromDate, LocalDate toDate, Klasse klasse, boolean schnelleVerbindungen, AnkunftSuche ankunftSuche, List<Passenger> passengers, boolean nurDeutschlandTicketVerbindungen, List<Produktgattung> produktgattungen) {
-        this.API_KEY = API_KEY;
-        this.timeOfRequest = timeOfRequest;
-        this.searchMode = searchMode;
-        this.origin = origin;
-        this.destination = destination;
-        this.specificTime = specificTime;
-        this.specificDay = specificDay;
-        this.fromDate = fromDate;
-        this.toDate = toDate;
-        this.klasse = klasse;
-        this.schnelleVerbindungen = schnelleVerbindungen;
-        this.ankunftSuche = ankunftSuche;
-        this.passengers = passengers;
-        this.nurDeutschlandTicketVerbindungen = nurDeutschlandTicketVerbindungen;
-        this.produktgattungen = produktgattungen;
+        this.bikeCarriage = bikeCarriage;
     }
 
     public SearchRequest() {}
@@ -108,7 +98,7 @@ public class SearchRequest {
                 isSchnelleVerbindungen(),
                 false,
                 false,
-                false
+                isBikeCarriage()
         );
     }
 
@@ -120,6 +110,7 @@ public class SearchRequest {
         this.API_KEY = API_KEY;
     }
 
+
     public LocalDateTime getTimeOfRequest() {
         return timeOfRequest;
     }
@@ -127,6 +118,7 @@ public class SearchRequest {
     public void setTimeOfRequest(LocalDateTime timeOfRequest) {
         this.timeOfRequest = timeOfRequest;
     }
+
 
     public Klasse getKlasse() {
         return klasse;
@@ -136,6 +128,7 @@ public class SearchRequest {
         this.klasse = klasse;
     }
 
+
     public boolean isSchnelleVerbindungen() {
         return schnelleVerbindungen;
     }
@@ -143,6 +136,7 @@ public class SearchRequest {
     public void setSchnelleVerbindungen(boolean schnelleVerbindungen) {
         this.schnelleVerbindungen = schnelleVerbindungen;
     }
+
 
     public SearchMode getSearchMode() {
         return searchMode;
@@ -152,6 +146,7 @@ public class SearchRequest {
         this.searchMode = searchMode;
     }
 
+
     public String getOrigin() {
         return origin;
     }
@@ -159,6 +154,7 @@ public class SearchRequest {
     public void setOrigin(String origin) {
         this.origin = origin;
     }
+
 
     public String getDestination() {
         return destination;
@@ -168,6 +164,7 @@ public class SearchRequest {
         this.destination = destination;
     }
 
+
     public LocalDateTime getSpecificTime() {
         return specificTime;
     }
@@ -175,6 +172,7 @@ public class SearchRequest {
     public void setSpecificTime(LocalDateTime specificTime) {
         this.specificTime = specificTime;
     }
+
 
     public LocalDate getSpecificDay() {
         return specificDay;
@@ -184,6 +182,7 @@ public class SearchRequest {
         this.specificDay = specificDay;
     }
 
+
     public LocalDate getFromDate() {
         return fromDate;
     }
@@ -191,6 +190,7 @@ public class SearchRequest {
     public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
+
 
     public LocalDate getToDate() {
         return toDate;
@@ -200,6 +200,7 @@ public class SearchRequest {
         this.toDate = toDate;
     }
 
+
     public AnkunftSuche getAnkunftSuche() {
         return ankunftSuche;
     }
@@ -207,6 +208,7 @@ public class SearchRequest {
     public void setAnkunftSuche(AnkunftSuche ankunftSuche) {
         this.ankunftSuche = ankunftSuche;
     }
+
 
     public List<Passenger> getPassengers() {
         return passengers;
@@ -216,6 +218,24 @@ public class SearchRequest {
         this.passengers = passengers;
     }
 
+
+    public List<SeasonalTicket> getSeasonalTickets() {
+        return seasonalTickets.stream().map(ticket -> {
+            switch (ticket) {
+                default:
+                    return new DeutschlandTicket();
+                case UMR_TICKET:
+                    return new SemesterTicketMarburg();
+
+            }
+        }).toList();
+    }
+
+    public void setSeasonalTickets(List<Ticket> seasonalTickets) {
+        this.seasonalTickets = seasonalTickets;
+    }
+
+
     public boolean isNurDeutschlandTicketVerbindungen() {
         return nurDeutschlandTicketVerbindungen;
     }
@@ -223,6 +243,7 @@ public class SearchRequest {
     public void setNurDeutschlandTicketVerbindungen(boolean nurDeutschlandTicketVerbindungen) {
         this.nurDeutschlandTicketVerbindungen = nurDeutschlandTicketVerbindungen;
     }
+
 
     public List<Produktgattung> getProduktgattungen() {
         return produktgattungen;
@@ -232,11 +253,21 @@ public class SearchRequest {
         this.produktgattungen = produktgattungen;
     }
 
+
     public int getMaxUmstiege() {
         return maxUmstiege;
     }
 
     public void setMaxUmstiege(int maxUmstiege) {
         this.maxUmstiege = maxUmstiege;
+    }
+
+
+    public boolean isBikeCarriage() {
+        return bikeCarriage;
+    }
+
+    public void setBikeCarriage(boolean bikeCarriage) {
+        this.bikeCarriage = bikeCarriage;
     }
 }

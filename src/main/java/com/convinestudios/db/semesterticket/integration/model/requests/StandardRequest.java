@@ -1,4 +1,4 @@
-package com.convinestudios.db.semesterticket.integration.model;
+package com.convinestudios.db.semesterticket.integration.model.requests;
 
 import com.convinestudios.db.semesterticket.integration.model.properties.AnkunftSuche;
 import com.convinestudios.db.semesterticket.integration.model.properties.Klasse;

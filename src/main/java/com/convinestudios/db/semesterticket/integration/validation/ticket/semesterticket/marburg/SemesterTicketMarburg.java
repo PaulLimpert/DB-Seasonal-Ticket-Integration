@@ -1,7 +1,7 @@
 package com.convinestudios.db.semesterticket.integration.validation.ticket.semesterticket.marburg;
 
 import com.convinestudios.db.semesterticket.integration.model.properties.Produktgattung;
-import com.convinestudios.db.semesterticket.integration.validation.ticket.semesterticket.TransitPass;
+import com.convinestudios.db.semesterticket.integration.validation.ticket.SeasonalTicket;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 // todo retrieve the current stops from a database
-public class SemesterTicketMarburg implements TransitPass {
-    private static final String PATH = "src/main/resources/tickets/umr/ticketsstations_hessen_plus.json";
+public class SemesterTicketMarburg implements SeasonalTicket {
+    private static final String PATH = "src/main/resources/tickets/umr/stations_hessen_plus.json";
     private Map<String, List<Produktgattung>> stations;
 
     private static final boolean DE_TICKET = true;
