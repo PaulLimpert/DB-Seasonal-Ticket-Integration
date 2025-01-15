@@ -5,7 +5,7 @@ public enum Klasse {
     KLASSE_1("KLASSE_1"),
     KLASSE_2("KLASSE_2");
 
-    private String stringRep;
+    private final String stringRep;
 
     Klasse(String stringRep){
         this.stringRep = stringRep;

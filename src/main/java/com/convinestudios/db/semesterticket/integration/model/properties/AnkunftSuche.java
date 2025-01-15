@@ -4,7 +4,7 @@ public enum AnkunftSuche {
     ABFAHRT("ABFAHRT"),
     ANKUNFT("ANKUNFT");
 
-    private String stringRep;
+    private final String stringRep;
 
     AnkunftSuche(String stringRep){
         this.stringRep = stringRep;

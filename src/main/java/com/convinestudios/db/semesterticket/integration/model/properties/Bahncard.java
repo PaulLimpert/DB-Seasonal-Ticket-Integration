@@ -8,7 +8,7 @@ public enum Bahncard {
     BAHNCARDBUSINESS50("BAHNCARDBUSINESS50"),
     BAHNCARD100("BAHNCARD100");
 
-    private String stringRep;
+    private final String stringRep;
 
     Bahncard(String stringRep){
         this.stringRep = stringRep;

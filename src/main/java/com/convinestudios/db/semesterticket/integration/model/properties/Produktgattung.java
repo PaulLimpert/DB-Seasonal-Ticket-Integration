@@ -12,7 +12,7 @@ public enum Produktgattung {
     TRAM("TRAM"),
     ANRUFPFLICHTIG("ANRUFPFLICHTIG");
 
-    private String stringRep;
+    private final String stringRep;
 
     Produktgattung(String stringRep){
         this.stringRep = stringRep;

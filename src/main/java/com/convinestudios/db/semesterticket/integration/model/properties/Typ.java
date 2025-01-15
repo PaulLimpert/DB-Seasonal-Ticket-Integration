@@ -7,7 +7,7 @@ public enum Typ {
     ERWACHSENER("ERWACHSENER"),     // Person (27-64)
     SENIOR("SENIOR");               // Person (ab 65)
 
-    private String stringRep;
+    private final String stringRep;
 
     Typ(String stringRep){
         this.stringRep = stringRep;

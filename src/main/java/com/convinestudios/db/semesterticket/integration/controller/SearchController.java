@@ -1,10 +1,8 @@
 package com.convinestudios.db.semesterticket.integration.controller;
 
-import com.convinestudios.db.semesterticket.integration.exception.NoResponseException;
 import com.convinestudios.db.semesterticket.integration.model.internal.SearchRequest;
 import com.convinestudios.db.semesterticket.integration.model.internal.SearchResponse;
 import com.convinestudios.db.semesterticket.integration.service.TicketCalculationService;
-import com.convinestudios.db.semesterticket.integration.service.request.ExternalApiService;
 import com.convinestudios.db.semesterticket.integration.validation.ApiKeyValidationService;
 import com.convinestudios.db.semesterticket.integration.validation.SearchRequestValidationService;
 import jakarta.validation.Valid;

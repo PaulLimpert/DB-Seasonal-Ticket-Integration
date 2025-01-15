@@ -1,8 +1,8 @@
 package com.convinestudios.db.semesterticket.integration.model.properties;
 
 public class Discount {
-    private Bahncard art;
-    private Klasse klasse;
+    private final Bahncard art;
+    private final Klasse klasse;
 
     // Default Constructor
     public Discount(Bahncard art, Klasse klasse) {

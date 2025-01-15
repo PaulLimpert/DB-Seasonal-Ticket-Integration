@@ -1,7 +1,6 @@
 package com.convinestudios.db.semesterticket.integration.config;
 
 import com.convinestudios.db.semesterticket.integration.service.request.ExternalApiClient;
-import com.convinestudios.db.semesterticket.integration.service.request.ExternalApiService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

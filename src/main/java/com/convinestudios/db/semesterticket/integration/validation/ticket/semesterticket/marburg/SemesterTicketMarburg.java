@@ -42,6 +42,6 @@ public class SemesterTicketMarburg implements SeasonalTicket {
     public boolean validateStop(String station, Produktgattung type) {
         if (DE_TICKET && (type == Produktgattung.REGIONAL || type == Produktgattung.BUS || type == Produktgattung.SBAHN || type == Produktgattung.UBAHN || type == Produktgattung.IR))
             return true;
-        return stations.containsKey(station) && stations.get(station).contains(type) ? true : false;
+        return stations.containsKey(station) && stations.get(station).contains(type);
     }
 }
