@@ -57,4 +57,4 @@ At [Known issues](#known-issues--work-in-progress-) you can find some issues whi
 
 ## License
 
-[Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+[MIT](https://choosealicense.com/licenses/mit/)
