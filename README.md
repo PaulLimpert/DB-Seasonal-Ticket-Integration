@@ -52,10 +52,9 @@ If you found an issue thats not in here you can help by making a pull request or
 ## Contributing
 
 If you want to contribute to this project, first of all thank you!
-At [Known issues](#known-issues-work-in-progress) you can find some issues which needs to be worked on, maybe you are the one who can fix them.
+At [Known issues](#known-issues--work-in-progress-) you can find some issues which needs to be worked on, maybe you are the one who can fix them. If you have some new features on your mind feel free to make an pull request aswell.
 
 
 ## License
 
 [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
