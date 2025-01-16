@@ -33,7 +33,7 @@ public class SearchController {
     // Standard welcome message
     @GetMapping("/")
     public String welcome() {
-        return "Welcome to the Semesterticket integration service by Paul Limpert";
+        return "Welcome to the seasonal ticket integration service by Paul Limpert";
     }
 
     // Request prices
