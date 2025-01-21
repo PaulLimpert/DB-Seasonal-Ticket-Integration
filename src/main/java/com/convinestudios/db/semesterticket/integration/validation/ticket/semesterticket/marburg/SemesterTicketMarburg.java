@@ -34,7 +34,7 @@ public class SemesterTicketMarburg implements SeasonalTicket {
             FileReader reader = new FileReader(PATH);
             stations = gson.fromJson(reader, mapType);
         } catch (FileNotFoundException e) {
-            System.err.println("Problem with loading the semesterticket information: " + e.getMessage());
+            System.err.println("Problem with loading the semester ticket information: " + e.getMessage());
         }
     }
 

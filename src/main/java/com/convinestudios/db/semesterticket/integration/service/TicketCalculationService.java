@@ -76,7 +76,12 @@ public class TicketCalculationService {
         String origin = null;
         LocalDateTime timeOfDeparture = null;
 
+        if (connection.getSections() == null || connection.getSections().isEmpty())
+            return;
+
         for (SectionsModel section: connection.getSections()) {
+            if (section.getStops() == null )
+                continue;
             for (StopModel stop: section.getStops()) {
                 // check weather the stop is included within one of the owned seasonal tickets
                 boolean isCoveredBySeasonalTicket = seasonalTickets.stream().anyMatch(ticket -> ticket.validateStop(stop.getName(), section.getVerkehrsmittel().getProduktGattung()));
